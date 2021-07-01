@@ -33,17 +33,17 @@
 
 ##  itemsテーブル (商品情報)
 
-| Column     | Type       | Options                           |
-| ---------- | ---------- | --------------------------------- |
-| item_name  | text       | null: false                       |
-| item_info  | text       | null: false                       |
-| category   | string     | null: false                       |
-| sales      | string     | null: false                       |
-| shipping   | string     | null: false                       |
-| prefecture | string     | null: false                       |
-| scheduled  | string     | null: false                       |
-| price      | Integer    | null: false                       |
-| user       | references | null: false, foreign_key: true    |
+| Column        | Type        | Options                           |
+| ------------- | ----------- | --------------------------------- |
+| item_name     | string      | null: false                       |
+| item_info     | text        | null: false                       |
+| category_id   | integer     | null: false                       |
+| sale_id       | integer     | null: false                       |
+| shipping_id   | integer     | null: false                       |
+| prefecture_id | integer     | null: false                       |
+| scheduled_id  | integer     | null: false                       |
+| price         | integer     | null: false                       |
+| user          | references  | null: false, foreign_key: true    |
 
 ### Association
 
@@ -55,11 +55,11 @@
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
 | postal_code    | string     | null: false                    |
-| prefecture     | string     | null: false                    |
+| prefecture     | integer    | null: false                    |
 | city           | string     | null: false                    |
 | addresses      | string     | null: false                    |
 | building       | string     |                                |
-| phone_number   | Integer    | null: false                    |
+| phone_number   | string     | null: false                    |
 | purchase       | references | null: false, foreign_key: true |
 
 ### Association
