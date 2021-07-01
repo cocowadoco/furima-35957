@@ -2,16 +2,16 @@
 
 ## users テーブル (ユーザー情報)
 
-| Column             | Type   | Options                |
-| ------------------ | ------ | ---------------------- |
-| email              | string | not null, unique: true |
-| encrypted_password | string | not null               |
-| first_name         | string | not null               |
-| last_name          | string | not null               |
-| first_name_kana    | string | not null               |
-| last_name_kana     | string | not null               |
-| birth              | string | not null               |
-| nickname           | string | not null, unique: true |
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| email              | string | null: false, unique: true |
+| encrypted_password | string | null: false               |
+| first_name         | string | null: false               |
+| last_name          | string | null: false               |
+| first_name_kana    | string | null: false               |
+| last_name_kana     | string | null: false               |
+| birth              | date   | null: false               |
+| nickname           | string | null: false               |
 
 ### Association
 
@@ -22,29 +22,28 @@
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
-| user_id    | references | null: false, foreign_key: true |
-| item_id    | references | null: false, foreign_key: true |
+| user       | references | null: false, foreign_key: true |
+| item       | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
-- has_one :residence
+- has_one :order
 
 ##  itemsテーブル (商品情報)
 
 | Column     | Type       | Options                           |
 | ---------- | ---------- | --------------------------------- |
-| image      |            |                                   |
-| item_name  | text       | not null                          |
-| item_info  | text       | not null                          |
-| category   | string     | not null                          |
-| sales      | string     | not null                          |
-| shipping   | string     | not null                          |
-| prefecture | string     | not null                          |
-| scheduled  | string     | not null                          |
-| price      | Integer    | not null                          |
-| user_id    | references | null: false, foreign_key: true    |
+| item_name  | text       | null: false                       |
+| item_info  | text       | null: false                       |
+| category   | string     | null: false                       |
+| sales      | string     | null: false                       |
+| shipping   | string     | null: false                       |
+| prefecture | string     | null: false                       |
+| scheduled  | string     | null: false                       |
+| price      | Integer    | null: false                       |
+| user       | references | null: false, foreign_key: true    |
 
 ### Association
 
@@ -55,19 +54,14 @@
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| card_number    | string     | not null                       |
-| card_exp-month | string     | not null                       |
-| card_exp-year  | string     | not null                       |
-| card_cvc       | string     | not null                       |
-| postal_code    | string     | not null                       |
-| prefecture     | string     | not null                       |
-| city           | string     | not null                       |
-| addresses      | string     | not null                       |
+| postal_code    | string     | null: false                    |
+| prefecture     | string     | null: false                    |
+| city           | string     | null: false                    |
+| addresses      | string     | null: false                    |
 | building       | string     |                                |
-| phone_number   | Integer    | not null                       |
-| user_id        | references | null: false, foreign_key: true |
-| item_id        | references | null: false, foreign_key: true |
+| phone_number   | Integer    | null: false                    |
+| purchase       | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :residence
+- belongs_to :purchase
